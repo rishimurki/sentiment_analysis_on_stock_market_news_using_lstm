@@ -25,8 +25,12 @@ nltk.download('wordnet')
 # Initialize the WordNet lemmatizer
 lemmatizer = WordNetLemmatizer()
 
+
+#use this to get file in google colab(only in colab)
 from google.colab import files
 uploaded = files.upload()
+
+
 data = pd.read_csv('Sentiment_Stock_data.csv')
 
 # Perform lemmatization on the text data
@@ -54,8 +58,10 @@ model.add(Embedding(input_dim=len(tokenizer.word_index) + 1, output_dim=100, inp
 model.add(LSTM(units=256))
 model.add(Dense(units=1, activation='sigmoid'))
 
+#compile the model
 model.compile(optimizer=adam, loss='binary_crossentropy', metrics=['accuracy'])
 
+#train the model
 model.fit(train_sequences_padded, train_labels, epochs=8, batch_size=32)
 
 
