@@ -15,6 +15,8 @@ from keras.layers import Embedding, LSTM, Dense
 from keras.preprocessing.text import Tokenizer
 from keras_preprocessing.sequence import pad_sequences
 from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
+from sklearn.metrics import accuracy_score
 import re
 
 # Download WordNet lemmatizer data
@@ -56,8 +58,7 @@ model.compile(optimizer=adam, loss='binary_crossentropy', metrics=['accuracy'])
 
 model.fit(train_sequences_padded, train_labels, epochs=8, batch_size=32)
 
-from sklearn.preprocessing import LabelEncoder
-from sklearn.metrics import accuracy_score
+
 # Encode the labels
 label_encoder = LabelEncoder()
 train_labels_encoded = label_encoder.fit_transform(train_labels)
