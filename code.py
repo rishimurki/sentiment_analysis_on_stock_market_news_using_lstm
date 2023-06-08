@@ -59,7 +59,7 @@ model.add(LSTM(units=256))
 model.add(Dense(units=1, activation='sigmoid'))
 
 #compile the model
-model.compile(optimizer=adam, loss='binary_crossentropy', metrics=['accuracy'])
+model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
 #train the model
 model.fit(train_sequences_padded, train_labels, epochs=8, batch_size=32)
